@@ -5,26 +5,27 @@ const Handlebars = require('handlebars');
 const BASE_PATH = path.resolve('./src');
 
 module.exports = {
-  createModule
+  createBlock
 };
 
 ///
 
-function createModule(moduleName, pluralModuleName = `${moduleName}s`) {
-  const MODULE_TEMPLATES_PATH = `${process.env.TEMPLATES_DIR}/module`;
+function createBlock(blockType, blockName, pluralBlockName = `${blockName}s`) {
+  const BLOCK_TEMPLATES_PATH = `${process.env.TEMPLATES_DIR}/${blockName}`;
+
   const templateCtx = {
-    moduleName: moduleName.replace(/\//g, '-'),
-    pluralModuleName: pluralModuleName.replace(/\//g, '-')
+    blockName: blockName.replace(/\//g, '-'),
+    pluralBlockName: pluralBlockName.replace(/\//g, '-')
   };
 
-  const templates = glob.sync(`*`, { cwd: MODULE_TEMPLATES_PATH, matchBase: true });
+  const templates = glob.sync(`*`, { cwd: BLOCK_TEMPLATES_PATH, matchBase: true });
   console.log(templates);
 
   for (let rawFileName of templates) {
     const nameTemplate = Handlebars.compile(rawFileName);
     const fileName = nameTemplate(templateCtx).replace('.hbs', '');
 
-    const originTemplatePath = `${MODULE_TEMPLATES_PATH}/${rawFileName}`;
+    const originTemplatePath = `${BLOCK_TEMPLATES_PATH}/${rawFileName}`;
     const targetTemplatePath = `${BASE_PATH}/${fileName}`;
 
     if (fs.existsSync(targetTemplatePath)) continue;
