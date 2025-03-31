@@ -1,13 +1,13 @@
 const cli = require('caporal');
-const { createBlock } = require('./create-module/index.js');
+const { createBlock } = require('./commands/create.js');
 
 module.exports = {
   create: cli.command('type', 'Create').alias('c')
     .argument('<type>', 'Block type')
     .argument('<block-name>', 'Name of a block')
-    .argument('<plural-name>', 'Plural name of a block')
-    .action(function (args, options, logger) {
-      return createBlock(args.blockType, args.blockName, args.pluralName);
+    .option('<plural-name>', 'Plural name of a block')
+    .action(function (args, opts, logger) {
+      return createBlock(args.blockType, args.blockName, opts.pluralName);
     }),
   test: cli.command('test', 'Test').alias('c')
     .action(function (args, options, logger) {
