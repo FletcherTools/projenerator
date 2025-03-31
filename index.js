@@ -18,8 +18,10 @@ fs.access(configPath, fs.F_OK, (err) => {
     || `${process.env.PWD}/projenerator/templates`;
 
   process.env.TEMPLATES_DIR = TEMPLATES_DIR;
+  globalThis.config = config;
 
   ///
 
+  console.log(process.argv)
   caporal.version('1.0.0').parse(process.argv);
 })

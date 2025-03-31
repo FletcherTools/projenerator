@@ -8,21 +8,21 @@ projenerator/config.json
 ```
 ### 2. Add templates
 Create handlebars templates.\
-You can use moduleName and pluralModuleName variables
+You can use blockName and pluralBlockName variables
 ```handlebars
-{{moduleName}}
-{{pluralModuleName}}
+{{blockName}}
+{{pluralBlockName}}
 ```
 You can use lower, capital, upper and snake helpers to transform passed variables
 ```handlebars
-{{lower moduleName}}
-{{capital moduleName}}
-{{upper moduleName}}
-{{snake moduleName}}
+{{lower blockName}}
+{{capital blockName}}
+{{upper blockName}}
+{{snake blockName}}
 ```
 
 ### Usage
 ```
-# projenerator module module-name plural-module-name
-projenerator module example examples
+# projenerator create block-type block-name plural-block-name
+projenerator create component example examples
 ```
