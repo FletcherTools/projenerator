@@ -1,0 +1,2 @@
+tsc
+git update-index --again

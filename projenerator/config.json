@@ -1,7 +1,0 @@
-{
-  "templatesDir": "./templates",
-  "targetDir": "./examples",
-  "targetBlockDirectories": {
-    "component": "./examples/components"
-  }
-}
