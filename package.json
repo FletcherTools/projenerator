@@ -18,6 +18,7 @@
     "typescript": "^5.8.2"
   },
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "watch": "tsc --watch"
   }
 }

@@ -9,6 +9,7 @@
     "outDir": "dist"
   },
   "files": [
+    "src/globals.d.ts",
     "src/index.ts"
   ]
 }

@@ -1,2 +1,4 @@
+.DS_Store
+.projenerator
 node_modules
 temp
