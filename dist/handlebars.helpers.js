@@ -40,6 +40,7 @@ Handlebars.registerHelper('pascal', toPascalCase);
 Handlebars.registerHelper('camel', toCamelCase);
 Handlebars.registerHelper('kebab', toKebabCase);
 Handlebars.registerHelper('snake', toSnakeCase);
+Handlebars.registerHelper('upper-snake', (v) => toUpperCase(toSnakeCase(v)));
 ///
 function toUpperCase(value) {
     return value === null || value === void 0 ? void 0 : value.toUpperCase();

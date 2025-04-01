@@ -6,6 +6,7 @@ Handlebars.registerHelper('pascal', toPascalCase);
 Handlebars.registerHelper('camel', toCamelCase);
 Handlebars.registerHelper('kebab', toKebabCase);
 Handlebars.registerHelper('snake', toSnakeCase);
+Handlebars.registerHelper('upper-snake', (v) => toUpperCase(toSnakeCase(v)));
 
 ///
 
