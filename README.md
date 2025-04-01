@@ -4,7 +4,6 @@
 `projenerator/config.json`
 ```
 {
-  "templatesDir": "./templates",
   "targetDir": "../src",
 }
 ```
