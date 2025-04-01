@@ -1,5 +1,5 @@
 {
-  "name": "projenerator",
+  "name": "@fletchers-tools/projenerator",
   "version": "2.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -20,5 +20,10 @@
   "scripts": {
     "prepare": "husky",
     "watch": "tsc --watch"
-  }
+  },
+  "description": "Template-based boilerplate code generator",
+  "directories": {
+    "example": "examples"
+  },
+  "author": "Fletcher Lind"
 }
