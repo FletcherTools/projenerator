@@ -1,10 +1,11 @@
 # Projenerator
 
 ### 1. Create a config file
-projenerator/config.json
+`projenerator/config.json`
 ```
 {
-  "templatesDir": "./templates"
+  "templatesDir": "./templates",
+  "targetDir": "../src",
 }
 ```
 
