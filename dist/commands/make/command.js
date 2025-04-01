@@ -53,7 +53,7 @@ function makeCommand(entityType, entityName, options) {
         entityName,
         entityNamePlural
     };
-    const variantModifier = options.variant ? `:${options.variant}` : '';
+    const variantModifier = options.variant ? `--${options.variant}` : '';
     const templatesPath = `${config.templatesDir}/${entityType}${variantModifier}`;
     const templates = glob.sync(`*`, { cwd: templatesPath, matchBase: true });
     // console.log(entityType, templatesPath, templates);

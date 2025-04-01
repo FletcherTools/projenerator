@@ -18,7 +18,7 @@ export function makeCommand(entityType: string, entityName: string, options: Mak
     entityNamePlural
   };
 
-  const variantModifier = options.variant ? `:${options.variant}` : '';
+  const variantModifier = options.variant ? `--${options.variant}` : '';
   const templatesPath = `${config.templatesDir}/${entityType}${variantModifier}`;
   const templates = glob.sync(`*`, { cwd: templatesPath, matchBase: true });
 
