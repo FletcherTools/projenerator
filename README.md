@@ -15,12 +15,14 @@ You can use entityName and entityNamePlural variables
 {{entityName}}
 {{entityNamePlural}}
 ```
-You can use lower, capital, upper and snake helpers to transform passed variables
+You can use upper, camel, pascal, kebab and snake helpers to transform passed variables
 ```handlebars
-{{lower entityName}}
-{{upper entityName}}
-{{capital entityName}}
-{{snake entityName}}
+{{camel entityName}} // entityName
+{{pascal entityName}} // EntityName
+{{kebab entityName}} // entity-name
+{{snake entityName}} // entity_name
+{{upper entityName}} // ENTITY-NAME
+{{upper (snake entityName)}} // ENTITY_NAME
 ```
 
 ### Usage

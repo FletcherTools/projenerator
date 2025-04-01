@@ -40,6 +40,7 @@ export function makeCommand(entityType: string, entityName: string, options: Mak
     }
 
     const template = require(originTemplatePath);
+    console.log('template', originTemplatePath, template);
     fs.writeFileSync(targetPath, template(templateCtx), "utf-8");
     createdFiles.push(targetPath);
   }

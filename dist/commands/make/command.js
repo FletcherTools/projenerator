@@ -72,6 +72,7 @@ function makeCommand(entityType, entityName, options) {
             continue;
         }
         const template = require(originTemplatePath);
+        console.log('template', originTemplatePath, template);
         fs_1.default.writeFileSync(targetPath, template(templateCtx), "utf-8");
         createdFiles.push(targetPath);
     }

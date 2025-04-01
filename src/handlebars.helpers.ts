@@ -1,26 +1,47 @@
 import * as Handlebars from 'handlebars';
 
-Handlebars.registerHelper('lower', function (str) {
-  return normalizeString(str);
-})
+Handlebars.registerHelper('upper', toUpperCase);
+Handlebars.registerHelper('capital', toPascalCase);
+Handlebars.registerHelper('pascal', toPascalCase);
+Handlebars.registerHelper('camel', toCamelCase);
+Handlebars.registerHelper('kebab', toKebabCase);
+Handlebars.registerHelper('snake', toSnakeCase);
 
-Handlebars.registerHelper('upper', function (str) {
-  const normalized = normalizeString(str);
-  return normalized.toUpperCase();
-})
+///
 
-Handlebars.registerHelper('capital', function (str) {
-  const normalized = normalizeString(str);
-  return normalized.replace(/^./, normalized?.[0]?.toUpperCase());
-})
+function toUpperCase(value: string): string {
+  return value?.toUpperCase();
+}
 
-Handlebars.registerHelper('snake', function (str) {
-  return str?.replace(/-/g, '_');
-})
+// camelCase
+function toCamelCase(value: string): string {
+  const normalized = normalizeString(value);
+  return normalized.replace(/-(\w)/g, (_, letter) => letter.toUpperCase());
+}
+
+// PascalCase
+function toPascalCase(value: string): string {
+  const normalized = normalizeString(value);
+  return normalized.replace(/(?:^|-)(\w)/g, (_, letter) => letter?.toUpperCase());
+}
+
+// snake_case
+function toSnakeCase(value: string): string {
+  return value?.replace(/-/g, '_');
+}
+
+// kebab-case
+function toKebabCase(value: string): string {
+  return normalizeString(value);
+}
 
 ///
 
 function normalizeString(str: string) {
-  return str?.replace(/\-\w/g, chr => chr[1].toUpperCase()) ?? '';
+  if (!str) return '';
+  return str
+    .replace(/([^^])([A-Z])/g, (_, g1, g2) => `${g1}-${g2}`)
+    .replace(/[_\-\s]+/g, '-')
+    .toLowerCase();
 }
 

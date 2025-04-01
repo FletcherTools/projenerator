@@ -34,23 +34,40 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const Handlebars = __importStar(require("handlebars"));
-Handlebars.registerHelper('lower', function (str) {
-    return normalizeString(str);
-});
-Handlebars.registerHelper('upper', function (str) {
-    const normalized = normalizeString(str);
-    return normalized.toUpperCase();
-});
-Handlebars.registerHelper('capital', function (str) {
-    var _a;
-    const normalized = normalizeString(str);
-    return normalized.replace(/^./, (_a = normalized === null || normalized === void 0 ? void 0 : normalized[0]) === null || _a === void 0 ? void 0 : _a.toUpperCase());
-});
-Handlebars.registerHelper('snake', function (str) {
-    return str === null || str === void 0 ? void 0 : str.replace(/-/g, '_');
-});
+Handlebars.registerHelper('upper', toUpperCase);
+Handlebars.registerHelper('capital', toPascalCase);
+Handlebars.registerHelper('pascal', toPascalCase);
+Handlebars.registerHelper('camel', toCamelCase);
+Handlebars.registerHelper('kebab', toKebabCase);
+Handlebars.registerHelper('snake', toSnakeCase);
+///
+function toUpperCase(value) {
+    return value === null || value === void 0 ? void 0 : value.toUpperCase();
+}
+// camelCase
+function toCamelCase(value) {
+    const normalized = normalizeString(value);
+    return normalized.replace(/-(\w)/g, (_, letter) => letter.toUpperCase());
+}
+// PascalCase
+function toPascalCase(value) {
+    const normalized = normalizeString(value);
+    return normalized.replace(/(?:^|-)(\w)/g, (_, letter) => letter === null || letter === void 0 ? void 0 : letter.toUpperCase());
+}
+// snake_case
+function toSnakeCase(value) {
+    return value === null || value === void 0 ? void 0 : value.replace(/-/g, '_');
+}
+// kebab-case
+function toKebabCase(value) {
+    return normalizeString(value);
+}
 ///
 function normalizeString(str) {
-    var _a;
-    return (_a = str === null || str === void 0 ? void 0 : str.replace(/\-\w/g, chr => chr[1].toUpperCase())) !== null && _a !== void 0 ? _a : '';
+    if (!str)
+        return '';
+    return str
+        .replace(/([^^])([A-Z])/g, (_, g1, g2) => `${g1}-${g2}`)
+        .replace(/[_\-\s]+/g, '-')
+        .toLowerCase();
 }
